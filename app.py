@@ -65,6 +65,27 @@ def start_game():
             for win in winner:
                 print(win)
 
+    old_score = []
+    file = open('scores.txt', 'r')
+    for line in file:
+        row = line.split()
+        color = row[0]
+        score = row[1]
+        old_score.append([color, score])
+
+    file.close()
+
+    file = open('scores.txt', 'w')
+
+    for entry in old_score:
+        for win in winner:
+            if entry[0] == win:
+                entry[1] = int(entry[1]) + 1
+
+        file.write(str(entry[0]) + ' ' + str(entry[1]) + '\n')
+
+    file.close()
+
 
 start_game()
 
