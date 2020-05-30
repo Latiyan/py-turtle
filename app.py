@@ -39,16 +39,16 @@ def start_game():
     start = -(window_length / 2) + 20
 
     for t in range(turtles):
-        new_pos_x = start + t * (window_length) // turtles
-        turtle_list.append( TurtleRacer( colors[t], ( new_pos_x, -230 ) ) )
+        new_pos_x = start + t * window_length // turtles
+        turtle_list.append(TurtleRacer(colors[t], (new_pos_x, -230)))
         turtle_list[t].turt.showturtle()
 
     run = True
+    winner = []
     while run:
         for t in turtle_list:
             t.move()
 
-        winner = []
         max_distance = 0
         for t in turtle_list:
             if t.pos[1] > 230 and t.pos[1] > max_distance:
@@ -65,4 +65,13 @@ def start_game():
             for win in winner:
                 print(win)
 
+
 start_game()
+
+while True:
+    print('-----------------------------------')
+    start = input('Would you like to play again? (Y/N): ')
+    if start.upper() == 'Y':
+        start_game()
+    else:
+        break
