@@ -1,4 +1,5 @@
 import turtle
+import random
 
 window_length = 500
 window_height = 500
@@ -18,3 +19,13 @@ class TurtleRacer(object):
         self.turt.penup()
         self.turt.setpos(pos)
         self.turt.setheading(90)
+
+    def move(self):
+        r = random.randrange(1, 20)
+        self.pos = (self.pos[0], self.pos[1] + r)
+        self.turt.pendown()
+        self.turt.forward(r)
+
+    def reset(self):
+        self.turt.penup()
+        self.turt.setpos(self.pos)
