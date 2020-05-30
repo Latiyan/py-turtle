@@ -43,4 +43,26 @@ def start_game():
         turtle_list.append( TurtleRacer( colors[t], ( new_pos_x, -230 ) ) )
         turtle_list[t].turt.showturtle()
 
+    run = True
+    while run:
+        for t in turtle_list:
+            t.move()
+
+        winner = []
+        max_distance = 0
+        for t in turtle_list:
+            if t.pos[1] > 230 and t.pos[1] > max_distance:
+                max_distance = t.pos[1]
+                winner = []
+                winner.append(t.color)
+            elif t.pos[1] > 230 and t.pos[1] == max_distance:
+                max_distance = t.pos[1]
+                winner.append(t.color)
+
+        if len(winner) > 0:
+            run = False
+            print('The winner is: ')
+            for win in winner:
+                print(win)
+
 start_game()
