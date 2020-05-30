@@ -29,3 +29,18 @@ class TurtleRacer(object):
     def reset(self):
         self.turt.penup()
         self.turt.setpos(self.pos)
+
+
+def start_game():
+    turtle_list = []
+    turtle.clearscreen()
+    turtle.hideturtle()
+    colors = ["red", "green", "blue", 'yellow', 'pink', 'orange', 'purple', 'black', 'grey']
+    start = -(window_length / 2) + 20
+
+    for t in range(turtles):
+        new_pos_x = start + t * (window_length) // turtles
+        turtle_list.append( TurtleRacer( colors[t], ( new_pos_x, -230 ) ) )
+        turtle_list[t].turt.showturtle()
+
+start_game()
